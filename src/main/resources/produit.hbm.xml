@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.aboulma.entities.Produit" table="produits">
+        <id name="id" column="id" type="long">
+            <generator class="native"/>
+        </id>
+        <property name="nom" column="nom" type="string" not-null="true"/>
+        <property name="prix" column="prix" type="double"/>
+        <property name="quantiteStock" column="quantite_stock" type="int"/>
+    </class>
+</hibernate-mapping>

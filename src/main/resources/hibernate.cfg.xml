@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- 1. PARAMÈTRES DE CONNEXION À LA BASE DE DONNÉES (POSTGRESQL)  -->
+        <!-- Le pilote JDBC officiel pour PostgreSQL -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <!-- L'URL de connexion : remplacez 'localhost:5432/ma_boutique' par vos infos -->
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernateXml_db</property>
+        <!-- Identifiant de votre base de données -->
+        <property name="connection.username">postgres</property>
+        <!-- Mot de passe de votre base de données -->
+        <property name="connection.password">65939191</property>
+
+        <!-- 2. PARAMÈTRES DE CONFIGURATION INTERNES D'HIBERNATE          -->
+        <!-- Le Dialect permet à Hibernate de traduire le HQL en SQL spécifique à PostgreSQL -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <!-- Affiche les requêtes SQL générées par Hibernate dans la console (pratique pour le dev) -->
+        <property name="show_sql">true</property>
+        <!-- Formate le SQL affiché en console pour le rendre lisible sur plusieurs lignes -->
+        <property name="format_sql">true</property>
+        <!--
+          Gestion automatique du schéma de la base de données :
+          - 'update' : Met à jour le schéma existant (ajoute des colonnes si besoin) sans supprimer les données.
+          - 'create' : Recrée la base à chaque démarrage (efface tout).
+          - 'validate' : Vérifie uniquement si les tables correspondent aux POJO.
+        -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 3. GESTION DES TRANSACTIONS ET DU CONTEXTE                  -->
+        <!-- Associe la session Hibernate au thread d'exécution courant -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- 4. DÉCLARATION DES FICHIERS DE MAPPING XML (HBM)            -->
+        <!-- Indique à Hibernate où trouver la configuration de l'entité Produit -->
+        <!-- Le fichier 'produit.hbm.xml' -->
+        <mapping resource="produit.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
